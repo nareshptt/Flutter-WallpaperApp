@@ -1,7 +1,9 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:wallpaperapp/Admin/Admin.login.dart';
 import 'package:wallpaperapp/Pages/Categories.dart';
 import 'package:wallpaperapp/Pages/Home.dart';
+
 import 'package:wallpaperapp/Pages/search.dart';
 
 class BottumNavigation extends StatefulWidget {
@@ -18,6 +20,8 @@ class _BottumNavigationState extends State<BottumNavigation> {
   late HomePage homePage;
   late Categories categories;
   late SearchPage searchPage;
+  late AdminLogin adminLogin;
+
   late Widget currentPage;
 
   @override
@@ -25,7 +29,8 @@ class _BottumNavigationState extends State<BottumNavigation> {
     homePage = HomePage();
     searchPage = SearchPage();
     categories = Categories();
-    pages = [homePage, searchPage, categories];
+    adminLogin = AdminLogin();
+    pages = [homePage, searchPage, categories, adminLogin];
     currentPage = HomePage();
     super.initState();
   }
@@ -55,6 +60,10 @@ class _BottumNavigationState extends State<BottumNavigation> {
             ),
             Icon(
               Icons.category,
+              color: Colors.white,
+            ),
+            Icon(
+              Icons.person,
               color: Colors.white,
             ),
           ]),

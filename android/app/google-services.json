@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "230438647059",
+    "project_id": "amigowallpaperapp",
+    "storage_bucket": "amigowallpaperapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:230438647059:android:f48255c5c6fbaca45bd6e6",
+        "android_client_info": {
+          "package_name": "com.example.wallpaperapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQkSgwLeF_d93M9-IpqyNYpgUalkd4610"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

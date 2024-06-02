@@ -67,7 +67,7 @@ class _SearchPageState extends State<SearchPage> {
             child: TextField(
               controller: searchController,
               decoration: InputDecoration(
-                  hintText: "Search here",
+                  hintText: "Search",
                   border: InputBorder.none,
                   suffixIcon: GestureDetector(
                       onTap: () {
