@@ -33,6 +33,7 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: [
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Material(
                     elevation: 6,
@@ -52,17 +53,17 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    width: 70,
-                  ),
                   Center(
-                    child: Text(
-                      "Amigo ",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 28,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: "Poppins"),
+                    child: Container(
+                      padding: EdgeInsets.only(right: 2),
+                      child: Text(
+                        "Amigo WallPaper ",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "Poppins"),
+                      ),
                     ),
                   ),
                 ],

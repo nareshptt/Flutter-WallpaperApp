@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:wallpaperapp/Models/Photo_mode.dart';
 import 'package:http/http.dart' as http;
@@ -16,6 +15,19 @@ class _SearchPageState extends State<SearchPage> {
   List<Photosmodel> photos = [];
   TextEditingController searchController = new TextEditingController();
   bool search = false;
+
+  void initState() {
+    super.initState();
+
+    _loadData();
+  }
+
+  void _loadData() async {
+    if (!search)
+      setState(() {
+        getSearchWallpaper("trending");
+      });
+  }
 
   getSearchWallpaper(String searchQuery) async {
     await http.get(
@@ -88,16 +100,7 @@ class _SearchPageState extends State<SearchPage> {
           SizedBox(
             height: 20,
           ),
-          !search
-              ? Column(
-                  children: [
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Center(child: Text("Search for the image you want.")),
-                  ],
-                )
-              : Expanded(child: wallpaper(photos, context))
+          Expanded(child: wallpaper(photos, context))
         ]),
       ),
     );
