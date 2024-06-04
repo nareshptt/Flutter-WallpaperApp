@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:wallpaperapp/Service/Database.dart';
 
+// ignore: must_be_immutable
 class Allwallpaper extends StatefulWidget {
   String category;
   Allwallpaper({required this.category});
