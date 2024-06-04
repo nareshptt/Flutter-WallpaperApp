@@ -93,7 +93,7 @@ class _AdminLoginState extends State<AdminLogin> {
                                   ),
                                 ),
                                 SizedBox(
-                                  height: 50,
+                                  height: 40,
                                 ),
                                 Container(
                                   padding: EdgeInsets.only(
@@ -167,16 +167,22 @@ class _AdminLoginState extends State<AdminLogin> {
   loginAdmin() {
     FirebaseFirestore.instance.collection("Admin").get().then((snapshot) {
       snapshot.docs.forEach((result) {
-        if (result.data()['id'] != usernameController.text.trim()) {
+        if (result.data()['id'] != usernameController.text.trim() &&
+            result.data()['password'] != passwordController.text.trim()) {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             backgroundColor: Colors.orangeAccent,
-            content: Text("Your id is not correct"),
+            content: Text("Please Enter Your Valid Credentials!"),
+          ));
+        } else if (result.data()['id'] != usernameController.text.trim()) {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            backgroundColor: Colors.orangeAccent,
+            content: Text("Please Enter Valid Username!!!"),
           ));
         } else if (result.data()['password'] !=
             passwordController.text.trim()) {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             backgroundColor: Colors.orangeAccent,
-            content: Text("Your Password is not correct"),
+            content: Text("Please Enter Valid Password!!!"),
           ));
         } else {
           Route route = MaterialPageRoute(builder: (context) => AddWallPaper());

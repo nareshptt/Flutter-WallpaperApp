@@ -16,6 +16,8 @@ class AddWallPaper extends StatefulWidget {
   State<AddWallPaper> createState() => _AddWallPaperState();
 }
 
+bool image = false;
+
 class _AddWallPaperState extends State<AddWallPaper> {
   final List<String> categoryitems = [
     'WildLife',
@@ -38,6 +40,12 @@ class _AddWallPaperState extends State<AddWallPaper> {
     setState(() {});
   }
 
+  Future removeImage() async {
+    image = true;
+
+    setState(() {});
+  }
+
   uploadImage() async {
     if (selectedImage != null) {
       String addId = randomAlphaNumeric(10);
@@ -54,6 +62,7 @@ class _AddWallPaperState extends State<AddWallPaper> {
       await DatabaseMethods()
           .addwallpaper(addItem, addId, value!)
           .then((value) {
+        removeImage();
         Fluttertoast.showToast(
             msg: "Wallpaper has been Added Successfully",
             toastLength: Toast.LENGTH_LONG,
@@ -72,11 +81,6 @@ class _AddWallPaperState extends State<AddWallPaper> {
       appBar: AppBar(
         leading: GestureDetector(
           onTap: () {
-            Route route =
-                MaterialPageRoute(builder: (context) => AddWallPaper());
-            Navigator.pushReplacement(context, route);
-          },
-          onLongPress: () {
             Route route =
                 MaterialPageRoute(builder: (context) => BottumNavigation());
             Navigator.pushReplacement(context, route);
@@ -141,10 +145,21 @@ class _AddWallPaperState extends State<AddWallPaper> {
                                   borderRadius: BorderRadius.circular(20)),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(20),
-                                child: Image.file(
-                                  selectedImage!,
-                                  fit: BoxFit.cover,
-                                ),
+                                child: !image
+                                    ? Image.file(
+                                        selectedImage!,
+                                        fit: BoxFit.cover,
+                                      )
+                                    : GestureDetector(
+                                        onTap: () {
+                                          image = false;
+                                          getImage();
+                                        },
+                                        child: Icon(
+                                          Icons.camera_alt_outlined,
+                                          color: Colors.black,
+                                        ),
+                                      ),
                               ),
                             ),
                           ),
@@ -196,7 +211,7 @@ class _AddWallPaperState extends State<AddWallPaper> {
                           borderRadius: BorderRadius.circular(10)),
                       child: Center(
                         child: Text(
-                          "Add",
+                          "Add Image",
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 20,

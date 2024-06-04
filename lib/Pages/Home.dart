@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -56,20 +57,25 @@ class _HomePageState extends State<HomePage> {
                   Center(
                     child: Container(
                       padding: EdgeInsets.only(right: 2),
-                      child: Text(
-                        "Amigo WallPaper ",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: "Poppins"),
+                      child: AnimatedTextKit(
+                        animatedTexts: [
+                          TyperAnimatedText(
+                            'Amigo WallPapers',
+                            textStyle: const TextStyle(
+                                fontSize: 19.0, fontFamily: "Poppins"),
+                            speed: Duration(milliseconds: 150),
+                          ),
+                        ],
+                        totalRepeatCount: 1, // Repeat animations 4 times
+                        pause: const Duration(
+                            milliseconds: 1000), // Pause between animations
                       ),
                     ),
                   ),
                 ],
               ),
               SizedBox(
-                height: 30,
+                height: 35,
               ),
               CarouselSlider.builder(
                   itemCount: Wallpaperimage.length,
