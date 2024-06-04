@@ -25,7 +25,7 @@ class _AddWallPaperState extends State<AddWallPaper> {
     'Nature',
     'City',
     'Car',
-    'Flowers'
+    'Flower'
   ];
 
   String? value;
@@ -42,7 +42,7 @@ class _AddWallPaperState extends State<AddWallPaper> {
 
   Future removeImage() async {
     image = true;
-
+    selectedImage = null;
     setState(() {});
   }
 
@@ -125,7 +125,7 @@ class _AddWallPaperState extends State<AddWallPaper> {
                                         color: Colors.black, width: 1.5),
                                     borderRadius: BorderRadius.circular(20)),
                                 child: Icon(
-                                  Icons.camera_alt_outlined,
+                                  Icons.add_a_photo,
                                   color: Colors.black,
                                 ),
                               ),
@@ -144,23 +144,11 @@ class _AddWallPaperState extends State<AddWallPaper> {
                                       color: Colors.black, width: 1.5),
                                   borderRadius: BorderRadius.circular(20)),
                               child: ClipRRect(
-                                borderRadius: BorderRadius.circular(20),
-                                child: !image
-                                    ? Image.file(
-                                        selectedImage!,
-                                        fit: BoxFit.cover,
-                                      )
-                                    : GestureDetector(
-                                        onTap: () {
-                                          image = false;
-                                          getImage();
-                                        },
-                                        child: Icon(
-                                          Icons.camera_alt_outlined,
-                                          color: Colors.black,
-                                        ),
-                                      ),
-                              ),
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Image.file(
+                                    selectedImage!,
+                                    fit: BoxFit.cover,
+                                  )),
                             ),
                           ),
                         ),
@@ -211,7 +199,7 @@ class _AddWallPaperState extends State<AddWallPaper> {
                           borderRadius: BorderRadius.circular(10)),
                       child: Center(
                         child: Text(
-                          "Add Image",
+                          "Add",
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 20,
