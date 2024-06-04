@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:random_string/random_string.dart';
-import 'package:wallpaperapp/Pages/Home.dart';
+import 'package:wallpaperapp/Pages/BottumNavigation.dart';
+
 import 'package:wallpaperapp/Service/Database.dart';
 
 class AddWallPaper extends StatefulWidget {
@@ -16,7 +17,14 @@ class AddWallPaper extends StatefulWidget {
 }
 
 class _AddWallPaperState extends State<AddWallPaper> {
-  final List<String> categoryitems = ['WildLife', 'Food', 'Nature', 'City'];
+  final List<String> categoryitems = [
+    'WildLife',
+    'Food',
+    'Nature',
+    'City',
+    'Car',
+    'Flowers'
+  ];
 
   String? value;
 
@@ -69,7 +77,8 @@ class _AddWallPaperState extends State<AddWallPaper> {
             Navigator.pushReplacement(context, route);
           },
           onLongPress: () {
-            Route route = MaterialPageRoute(builder: (context) => HomePage());
+            Route route =
+                MaterialPageRoute(builder: (context) => BottumNavigation());
             Navigator.pushReplacement(context, route);
           },
           child: Icon(

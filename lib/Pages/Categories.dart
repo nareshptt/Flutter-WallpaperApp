@@ -101,6 +101,23 @@ class _CategoriesState extends State<Categories> {
                         ),
                       ),
                     ),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 180,
+                      decoration: BoxDecoration(
+                          color: Colors.black26,
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Center(
+                        child: Text(
+                          "Food",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'Poppins',
+                              fontSize: 28,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -152,7 +169,7 @@ class _CategoriesState extends State<Categories> {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(20),
                       child: Image.asset(
-                        "assets/city.jpg",
+                        "assets/car.jpg",
                         width: MediaQuery.of(context).size.width,
                         height: 180,
                         fit: BoxFit.cover,
@@ -166,7 +183,44 @@ class _CategoriesState extends State<Categories> {
                           borderRadius: BorderRadius.circular(20)),
                       child: Center(
                         child: Text(
-                          "City",
+                          "Cars",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'Poppins',
+                              fontSize: 28,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 20, right: 20, bottom: 20),
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Stack(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Image.asset(
+                        "assets/f.jpg",
+                        width: MediaQuery.of(context).size.width,
+                        height: 180,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 180,
+                      decoration: BoxDecoration(
+                          color: Colors.black26,
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Center(
+                        child: Text(
+                          "Flowers",
                           style: TextStyle(
                               color: Colors.white,
                               fontFamily: 'Poppins',

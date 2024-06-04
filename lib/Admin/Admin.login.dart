@@ -1,8 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:wallpaperapp/Admin/Add_WallPaper.dart';
 
 class AdminLogin extends StatefulWidget {
@@ -174,8 +172,8 @@ class _AdminLoginState extends State<AdminLogin> {
             backgroundColor: Colors.orangeAccent,
             content: Text("Your id is not correct"),
           ));
-        }
-        if (result.data()['password'] != passwordController.text.trim()) {
+        } else if (result.data()['password'] !=
+            passwordController.text.trim()) {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             backgroundColor: Colors.orangeAccent,
             content: Text("Your Password is not correct"),
@@ -183,22 +181,14 @@ class _AdminLoginState extends State<AdminLogin> {
         } else {
           Route route = MaterialPageRoute(builder: (context) => AddWallPaper());
           Navigator.pushReplacement(context, route);
+
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            backgroundColor: Colors.green,
+            content: Text("Login Successfully"),
+          ));
         }
         ;
       });
     });
-  }
-
-  loginCkeck() {
-    final auth = FirebaseAuth.instance;
-    final user = auth.currentUser;
-
-    if (user != null) {
-      Route route = MaterialPageRoute(builder: (context) => AddWallPaper());
-      Navigator.pushReplacement(context, route);
-    } else {
-      Route route = MaterialPageRoute(builder: (context) => AdminLogin());
-      Navigator.pushReplacement(context, route);
-    }
   }
 }

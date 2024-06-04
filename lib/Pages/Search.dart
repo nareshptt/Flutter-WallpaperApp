@@ -91,7 +91,6 @@ class _SearchPageState extends State<SearchPage> {
                                 photos = [];
                                 search = false;
                                 setState(() {});
-                                searchController.text = "";
                               },
                               child: Icon(Icons.close))
                           : Icon(Icons.search))),
