@@ -60,7 +60,7 @@ class _HomePageState extends State<HomePage> {
                       child: AnimatedTextKit(
                         animatedTexts: [
                           TyperAnimatedText(
-                            'Amigo WallPapers',
+                            "Amigo Photo Gallery ",
                             textStyle: const TextStyle(
                                 fontSize: 19.0, fontFamily: "Poppins"),
                             speed: Duration(milliseconds: 150),
