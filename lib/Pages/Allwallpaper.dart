@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:wallpaperapp/Pages/FullScreen.dart';
 import 'package:wallpaperapp/Service/Database.dart';
 
 // ignore: must_be_immutable
@@ -44,13 +44,23 @@ class _AllwallpaperState extends State<Allwallpaper> {
                   itemCount: snapshot.data.docs.length,
                   itemBuilder: (context, index) {
                     DocumentSnapshot ds = snapshot.data.docs[index];
-                    return Container(
-                      child: ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
-                          child: Image.network(
-                            ds["Image"],
-                            fit: BoxFit.cover,
-                          )),
+                    return GestureDetector(
+                      onTap: () {
+                        final imagePath = snapshot.data.docs[index]["Image"];
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    FullScreen(imagePath: imagePath)));
+                      },
+                      child: Container(
+                        child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: Image.network(
+                              ds["Image"],
+                              fit: BoxFit.cover,
+                            )),
+                      ),
                     );
                   })
               : Container();

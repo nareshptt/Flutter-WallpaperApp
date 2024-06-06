@@ -25,7 +25,8 @@ class _AddWallPaperState extends State<AddWallPaper> {
     'Nature',
     'City',
     'Car',
-    'Flower'
+    'Flower',
+    'Home banner'
   ];
 
   String? value;

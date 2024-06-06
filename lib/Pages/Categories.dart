@@ -220,8 +220,7 @@ class _CategoriesState extends State<Categories> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                              Allwallpaper(category: "Cars")));
+                          builder: (context) => Allwallpaper(category: "Car")));
                 },
                 child: Container(
                   margin: EdgeInsets.only(left: 20, right: 20, bottom: 20),
@@ -248,7 +247,7 @@ class _CategoriesState extends State<Categories> {
                             borderRadius: BorderRadius.circular(20)),
                         child: Center(
                           child: Text(
-                            "Cars",
+                            "Car",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontFamily: 'Poppins',
@@ -267,7 +266,7 @@ class _CategoriesState extends State<Categories> {
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              Allwallpaper(category: "Flowers")));
+                              Allwallpaper(category: "Flower")));
                 },
                 child: Container(
                   margin: EdgeInsets.only(left: 20, right: 20, bottom: 20),
@@ -294,7 +293,7 @@ class _CategoriesState extends State<Categories> {
                             borderRadius: BorderRadius.circular(20)),
                         child: Center(
                           child: Text(
-                            "Flowers",
+                            "Flower",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontFamily: 'Poppins',
