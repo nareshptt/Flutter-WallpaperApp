@@ -1,7 +1,9 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:wallpaperapp/Models/Photo_mode.dart';
 import 'package:http/http.dart' as http;
+import 'package:wallpaperapp/Pages/Home.dart';
 import 'package:wallpaperapp/Widget/Widget.dart';
 
 class SearchPage extends StatefulWidget {
@@ -83,7 +85,17 @@ class _SearchPageState extends State<SearchPage> {
                   border: InputBorder.none,
                   suffixIcon: GestureDetector(
                       onTap: () {
-                        getSearchWallpaper(searchController.text);
+                        !internet
+                            ? Fluttertoast.showToast(
+                                msg:
+                                    "You are currently offline. Please connect to the internet to use this feature.",
+                                toastLength: Toast.LENGTH_LONG,
+                                gravity: ToastGravity.CENTER,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: Colors.red,
+                                textColor: Colors.white,
+                                fontSize: 16.0)
+                            : getSearchWallpaper(searchController.text);
                       },
                       child: search
                           ? GestureDetector(

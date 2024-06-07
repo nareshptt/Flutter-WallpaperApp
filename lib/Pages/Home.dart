@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:wallpaperapp/Admin/Admin.login.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -12,6 +13,8 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
+bool internet = true;
+
 class _HomePageState extends State<HomePage> {
   late Stream<QuerySnapshot> imageStream;
   int currentSlideIndex = 0;
@@ -19,8 +22,31 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+
+    checkInternet();
+
     var firebase = FirebaseFirestore.instance;
     imageStream = firebase.collection("Home banner").snapshots();
+  }
+
+  checkInternet() {
+    InternetConnectionChecker().onStatusChange.listen((status) {
+      switch (status) {
+        case InternetConnectionStatus.connected:
+          internet = true;
+
+          break;
+
+        case InternetConnectionStatus.disconnected:
+          internet = false;
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            backgroundColor: Colors.red,
+            content: Text("No Internet Connection!"),
+          ));
+
+          break;
+      }
+    });
   }
 
   @override
@@ -94,7 +120,21 @@ class _HomePageState extends State<HomePage> {
                             DocumentSnapshot sliderImage =
                                 snapshot.data!.docs[index];
                             final res = sliderImage['Image'];
-                            return builImage(res, index);
+                            return !internet
+                                ? Center(
+                                    child: Container(
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              1.5,
+                                      width: MediaQuery.of(context).size.width,
+                                      child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(23),
+                                          child:
+                                              Image.asset("assets/error.png")),
+                                    ),
+                                  )
+                                : builImage(res, index);
                           },
                           options: CarouselOptions(
                               autoPlay: true,
@@ -109,7 +149,7 @@ class _HomePageState extends State<HomePage> {
                               }));
                     } else {
                       return const Center(
-                        child: CircularProgressIndicator(),
+                        child: Center(child: CircularProgressIndicator()),
                       );
                     }
                   }),

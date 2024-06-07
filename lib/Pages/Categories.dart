@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:wallpaperapp/Pages/Allwallpaper.dart';
 
 class Categories extends StatefulWidget {

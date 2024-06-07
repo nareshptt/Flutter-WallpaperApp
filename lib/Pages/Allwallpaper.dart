@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+
 import 'package:wallpaperapp/Pages/FullScreen.dart';
+import 'package:wallpaperapp/Pages/Home.dart';
 import 'package:wallpaperapp/Service/Database.dart';
 
 // ignore: must_be_immutable
@@ -87,7 +89,17 @@ class _AllwallpaperState extends State<Allwallpaper> {
             SizedBox(
               height: 10,
             ),
-            Expanded(child: allwallpaper())
+            !internet
+                ? Center(
+                    child: Container(
+                      height: MediaQuery.of(context).size.height / 1.5,
+                      width: MediaQuery.of(context).size.width,
+                      child: ClipRRect(
+                          borderRadius: BorderRadius.circular(23),
+                          child: Image.asset("assets/error.png")),
+                    ),
+                  )
+                : Expanded(child: allwallpaper())
           ],
         ),
       ),
